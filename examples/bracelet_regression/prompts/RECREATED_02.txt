@@ -1,0 +1,55 @@
+[OUTPUT CONTRACT]
+Generate exactly ONE independent vertical image for RECREATED_02.
+ASSET_COUNT = 1.
+NO collage. NO triptych. NO split-screen. NO contact sheet. NO comparison board.
+Do not add labels or task names into the image.
+
+[SOURCE SEMANTIC FUNCTION]
+architecture-only establishing shot used as a luck/atmosphere beat; no person and no jewelry product
+
+[PRESENCE MAP — HARD GATE]
+HAND = NO
+PRODUCT = NO
+CLOTHING = NO
+TEMPLE = YES
+
+Presence rules override Master availability.
+A GLOBAL MASTER does NOT authorize an element to appear.
+If PRESENCE = NO, that element MUST NOT appear in the output.
+
+
+[HAND — FORBIDDEN]
+No human hand, arm, wrist, fingers or nails may appear.
+
+[PRODUCT — FORBIDDEN]
+No bracelet, jewelry product, product charm or product display may appear.
+
+[CLOTHING — NOT REQUIRED]
+Do not invent sleeves or garments merely because a clothing master exists.
+
+[ENVIRONMENT / TEMPLE — ACTIVE]
+recreate the architecture shot as a visibly different but coherent traditional East Asian temple/courtyard view; preserve architecture-only semantic function; change camera/composition, lighting and foreground/background organization
+No hand or product may be introduced unless Presence Map explicitly enables them.
+
+[MANDATORY REPLACEMENTS]
+- remove source text
+- recreate the architecture rather than copying the exact source view
+
+[PRESERVE]
+- architecture-only shot function
+- vertical establishing-shot readability
+
+[CREATIVE DELTA]
+- different temple/courtyard viewpoint
+- different composition/foreground structure
+- different light/weather state
+
+[FINAL NEGATIVE CONSTRAINTS]
+Never infer that every Master must appear in every shot.
+Never turn an environment-only source into a product shot.
+Never generate more than one output image.
+Never create a multi-panel layout.
+No unauthorized text.
+
+[FINAL]
+ONE TASK -> ONE IMAGE -> ONE OUTPUT ASSET.

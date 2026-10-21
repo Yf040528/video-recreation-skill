@@ -1,0 +1,47 @@
+{
+  "task_id": "RECREATED_01",
+  "job_id": "bracelet_regression",
+  "mode": "RECREATED_SHOT",
+  "source": "source/SOURCE_01.png",
+  "semantic_function": "single manicured hand holds up a bracelet for a close product reveal",
+  "presence_map": {
+    "hand": true,
+    "product": true,
+    "clothing": false,
+    "temple": false
+  },
+  "global_master": {
+    "hand_master": {
+      "authorized_hand_count": 1,
+      "description": "same elegant fair-skinned female hand identity when HAND=YES; long nude glossy manicure; realistic anatomy"
+    },
+    "product_master": {
+      "description": "pastel floral gemstone bracelet from PRODUCT_REFERENCE: green jade/moss-like beads, pale pink translucent beads, clear faceted crystal, milky white beads, gold filigree spacers, white flower ornament and dangling white-flower charm; exact reference identity should be preserved"
+    },
+    "clothing_master": {
+      "description": "sheer ivory/cream lace sleeve from CLOTHING_REFERENCE; same material, tone, translucency and cuff character whenever CLOTHING=YES"
+    },
+    "environment_master": {
+      "temple_description": "recreate the architecture shot as a visibly different but coherent traditional East Asian temple/courtyard view; preserve architecture-only semantic function; change camera/composition, lighting and foreground/background organization"
+    }
+  },
+  "mandatory_replacements": [
+    "replace source bracelet with PRODUCT_MASTER",
+    "remove all source text/branding"
+  ],
+  "preserve": [
+    "one-hand product-hold interaction",
+    "realistic fingers and grip"
+  ],
+  "creative_delta": [
+    "new non-temple environment",
+    "new camera/composition",
+    "new lighting design"
+  ],
+  "output_contract": {
+    "asset_count": 1,
+    "independent_asset": true,
+    "collage": false,
+    "output": "outputs/RECREATED_01.png"
+  }
+}

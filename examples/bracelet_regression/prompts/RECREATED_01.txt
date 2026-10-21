@@ -1,0 +1,59 @@
+[OUTPUT CONTRACT]
+Generate exactly ONE independent vertical image for RECREATED_01.
+ASSET_COUNT = 1.
+NO collage. NO triptych. NO split-screen. NO contact sheet. NO comparison board.
+Do not add labels or task names into the image.
+
+[SOURCE SEMANTIC FUNCTION]
+single manicured hand holds up a bracelet for a close product reveal
+
+[PRESENCE MAP — HARD GATE]
+HAND = YES
+PRODUCT = YES
+CLOTHING = NO
+TEMPLE = NO
+
+Presence rules override Master availability.
+A GLOBAL MASTER does NOT authorize an element to appear.
+If PRESENCE = NO, that element MUST NOT appear in the output.
+
+
+[HAND MASTER — ACTIVE]
+same elegant fair-skinned female hand identity when HAND=YES; long nude glossy manicure; realistic anatomy
+AUTHORIZED_HAND_COUNT = 1
+No extra hands, detached fingers, duplicated limbs or anatomy errors.
+
+[PRODUCT MASTER — ACTIVE]
+pastel floral gemstone bracelet from PRODUCT_REFERENCE: green jade/moss-like beads, pale pink translucent beads, clear faceted crystal, milky white beads, gold filigree spacers, white flower ornament and dangling white-flower charm; exact reference identity should be preserved
+Use TARGET PRODUCT only.
+Source product reappearance is forbidden.
+Preserve product component structure, order, material, geometry and physical fit.
+
+[CLOTHING — NOT REQUIRED]
+Do not invent sleeves or garments merely because a clothing master exists.
+
+[TEMPLE — NOT REQUIRED]
+Do not force temple architecture into this shot.
+
+[MANDATORY REPLACEMENTS]
+- replace source bracelet with PRODUCT_MASTER
+- remove all source text/branding
+
+[PRESERVE]
+- one-hand product-hold interaction
+- realistic fingers and grip
+
+[CREATIVE DELTA]
+- new non-temple environment
+- new camera/composition
+- new lighting design
+
+[FINAL NEGATIVE CONSTRAINTS]
+Never infer that every Master must appear in every shot.
+Never turn an environment-only source into a product shot.
+Never generate more than one output image.
+Never create a multi-panel layout.
+No unauthorized text.
+
+[FINAL]
+ONE TASK -> ONE IMAGE -> ONE OUTPUT ASSET.

@@ -1,0 +1,47 @@
+{
+  "task_id": "RECREATED_02",
+  "job_id": "bracelet_regression",
+  "mode": "RECREATED_SHOT",
+  "source": "source/SOURCE_02.png",
+  "semantic_function": "architecture-only establishing shot used as a luck/atmosphere beat; no person and no jewelry product",
+  "presence_map": {
+    "hand": false,
+    "product": false,
+    "clothing": false,
+    "temple": true
+  },
+  "global_master": {
+    "hand_master": {
+      "authorized_hand_count": 1,
+      "description": "same elegant fair-skinned female hand identity when HAND=YES; long nude glossy manicure; realistic anatomy"
+    },
+    "product_master": {
+      "description": "pastel floral gemstone bracelet from PRODUCT_REFERENCE: green jade/moss-like beads, pale pink translucent beads, clear faceted crystal, milky white beads, gold filigree spacers, white flower ornament and dangling white-flower charm; exact reference identity should be preserved"
+    },
+    "clothing_master": {
+      "description": "sheer ivory/cream lace sleeve from CLOTHING_REFERENCE; same material, tone, translucency and cuff character whenever CLOTHING=YES"
+    },
+    "environment_master": {
+      "temple_description": "recreate the architecture shot as a visibly different but coherent traditional East Asian temple/courtyard view; preserve architecture-only semantic function; change camera/composition, lighting and foreground/background organization"
+    }
+  },
+  "mandatory_replacements": [
+    "remove source text",
+    "recreate the architecture rather than copying the exact source view"
+  ],
+  "preserve": [
+    "architecture-only shot function",
+    "vertical establishing-shot readability"
+  ],
+  "creative_delta": [
+    "different temple/courtyard viewpoint",
+    "different composition/foreground structure",
+    "different light/weather state"
+  ],
+  "output_contract": {
+    "asset_count": 1,
+    "independent_asset": true,
+    "collage": false,
+    "output": "outputs/RECREATED_02.png"
+  }
+}

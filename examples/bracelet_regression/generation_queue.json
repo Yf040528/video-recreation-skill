@@ -1,0 +1,26 @@
+[
+  {
+    "task_id": "RECREATED_01",
+    "prompt_file": "prompts/RECREATED_01.txt",
+    "source_file": "source/SOURCE_01.png",
+    "expected_output": "outputs/RECREATED_01.png",
+    "asset_count": 1,
+    "status": "WAITING_FOR_GENERATOR"
+  },
+  {
+    "task_id": "RECREATED_02",
+    "prompt_file": "prompts/RECREATED_02.txt",
+    "source_file": "source/SOURCE_02.png",
+    "expected_output": "outputs/RECREATED_02.png",
+    "asset_count": 1,
+    "status": "WAITING_FOR_GENERATOR"
+  },
+  {
+    "task_id": "RECREATED_03",
+    "prompt_file": "prompts/RECREATED_03.txt",
+    "source_file": "source/SOURCE_03.png",
+    "expected_output": "outputs/RECREATED_03.png",
+    "asset_count": 1,
+    "status": "WAITING_FOR_GENERATOR"
+  }
+]

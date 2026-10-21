@@ -1,0 +1,61 @@
+[OUTPUT CONTRACT]
+Generate exactly ONE independent vertical image for RECREATED_03.
+ASSET_COUNT = 1.
+NO collage. NO triptych. NO split-screen. NO contact sheet. NO comparison board.
+Do not add labels or task names into the image.
+
+[SOURCE SEMANTIC FUNCTION]
+close wrist-worn bracelet lifestyle shot
+
+[PRESENCE MAP — HARD GATE]
+HAND = YES
+PRODUCT = YES
+CLOTHING = YES
+TEMPLE = NO
+
+Presence rules override Master availability.
+A GLOBAL MASTER does NOT authorize an element to appear.
+If PRESENCE = NO, that element MUST NOT appear in the output.
+
+
+[HAND MASTER — ACTIVE]
+same elegant fair-skinned female hand identity when HAND=YES; long nude glossy manicure; realistic anatomy
+AUTHORIZED_HAND_COUNT = 1
+No extra hands, detached fingers, duplicated limbs or anatomy errors.
+
+[PRODUCT MASTER — ACTIVE]
+pastel floral gemstone bracelet from PRODUCT_REFERENCE: green jade/moss-like beads, pale pink translucent beads, clear faceted crystal, milky white beads, gold filigree spacers, white flower ornament and dangling white-flower charm; exact reference identity should be preserved
+Use TARGET PRODUCT only.
+Source product reappearance is forbidden.
+Preserve product component structure, order, material, geometry and physical fit.
+
+[CLOTHING MASTER — ACTIVE]
+sheer ivory/cream lace sleeve from CLOTHING_REFERENCE; same material, tone, translucency and cuff character whenever CLOTHING=YES
+Use TARGET CLOTHING only. Source clothing reappearance is forbidden.
+
+[TEMPLE — NOT REQUIRED]
+Do not force temple architecture into this shot.
+
+[MANDATORY REPLACEMENTS]
+- replace source bracelet with PRODUCT_MASTER
+- replace red knitted sleeve with CLOTHING_MASTER
+- remove source branding/text
+
+[PRESERVE]
+- single wrist/hand lifestyle-display function
+- physically plausible bracelet fit
+
+[CREATIVE DELTA]
+- new non-temple background
+- new camera angle/composition
+- new lighting design
+
+[FINAL NEGATIVE CONSTRAINTS]
+Never infer that every Master must appear in every shot.
+Never turn an environment-only source into a product shot.
+Never generate more than one output image.
+Never create a multi-panel layout.
+No unauthorized text.
+
+[FINAL]
+ONE TASK -> ONE IMAGE -> ONE OUTPUT ASSET.
