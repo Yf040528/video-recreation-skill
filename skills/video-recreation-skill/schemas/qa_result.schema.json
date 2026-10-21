@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"qa_result.schema.json",
+  "title":"Layered QA Result",
+  "type":"object",
+  "required":["stage","status","checks"],
+  "properties":{
+    "stage":{"enum":["script","image","video","audio","final_film","compliance"]},
+    "shot_id":{"type":["string","null"]},
+    "asset_id":{"type":["string","null"]},
+    "status":{"enum":["PASS","FAIL","REVIEW"]},
+    "checks":{"type":"array","items":{"type":"object","required":["name","status"],"properties":{"name":{"type":"string"},"status":{"enum":["PASS","FAIL","REVIEW"]},"evidence":{"type":["string","object","array","null"]}}}},
+    "fail_codes":{"type":"array","items":{"type":"string"}},
+    "targeted_corrections":{"type":"array","items":{"type":"string"}},
+    "invalidates":{"type":"array","items":{"type":"string"}}
+  },
+  "additionalProperties":true
+}

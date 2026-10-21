@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shot.schema.json",
+  "title": "SVML Shot",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "semantic_function",
+    "presence",
+    "preserve",
+    "replace",
+    "creative_delta",
+    "generation"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "semantic_function": {
+      "type": "string",
+      "minLength": 1
+    },
+    "presence": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "preserve": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "replace": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "creative_delta": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "generation": {
+      "type": "object",
+      "required": [
+        "capability",
+        "asset_count"
+      ],
+      "properties": {
+        "capability": {
+          "enum": [
+            "image_generation",
+            "image_edit",
+            "video_generation"
+          ]
+        },
+        "asset_count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "visual": {
+      "type": "object",
+      "description": "V2.2.10 visual parameter checklist (source facts + recreation light plan)",
+      "properties": {
+        "lighting": {
+          "type": "string"
+        },
+        "lighting_plan": {
+          "type": "string"
+        },
+        "lens": {
+          "type": "string"
+        },
+        "texture": {
+          "type": "string"
+        },
+        "weather_time": {
+          "type": "string"
+        },
+        "props": {
+          "type": "string"
+        },
+        "camera_move": {
+          "type": "string"
+        },
+        "subject_move": {
+          "type": "string"
+        },
+        "pace": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

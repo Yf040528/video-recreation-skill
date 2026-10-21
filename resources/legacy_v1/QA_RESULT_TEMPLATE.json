@@ -1,0 +1,14 @@
+{
+  "checks": {
+    "output_isolation": false,
+    "presence_map": false,
+    "semantic_function": false,
+    "product_identity": false,
+    "product_geometry": false,
+    "product_fit": false,
+    "hand_anatomy": false,
+    "clothing_identity": false,
+    "creative_delta_ge_2": false
+  },
+  "notes": "Set a check true only after inspecting the actual generated output against SOURCE and references."
+}

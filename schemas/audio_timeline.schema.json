@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"audio_timeline.schema.json",
+  "title":"Audio Timeline",
+  "type":"object",
+  "required":["shot_id"],
+  "properties":{
+    "shot_id":{"type":"string"},
+    "dialogue":{"type":"array","items":{"type":"object"}},
+    "voice_identity":{"type":["string","null"]},
+    "lip_sync_required":{"type":"boolean"},
+    "sfx_cues":{"type":"array","items":{"type":"object"}},
+    "bgm":{"type":"object"},
+    "beat_markers":{"type":"array","items":{"type":"number","minimum":0}},
+    "subtitles":{"type":"array","items":{"type":"object"}}
+  },
+  "additionalProperties":true
+}

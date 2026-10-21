@@ -1,0 +1,498 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "recreation_policy.schema.json",
+  "title": "爆款二创规则（机器可读）",
+  "type": "object",
+  "required": [
+    "version",
+    "principle",
+    "action_vocabulary",
+    "priority_order",
+    "elements",
+    "modes",
+    "anchors",
+    "user_edits",
+    "editing_after_generation",
+    "visual_checklist",
+    "qa_codes",
+    "copy",
+    "brand_end_card",
+    "one_click",
+    "prompts"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "principle": {
+      "type": "string"
+    },
+    "action_vocabulary": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "priority_order": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rank",
+          "source",
+          "name",
+          "scope"
+        ],
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "source": {
+            "enum": [
+              "frame_reference_image",
+              "film_anchor",
+              "frame_prompt_edit",
+              "breakdown_request",
+              "mode_defaults",
+              "locks"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "frame",
+              "film"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "elements": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "modes": {
+      "type": "object",
+      "required": [
+        "conservative",
+        "medium",
+        "bold"
+      ],
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "label",
+          "elements",
+          "creative_delta",
+          "variant_button",
+          "analysis_prompt"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "elements": {
+            "type": "object",
+            "required": [
+              "composition_camera_shot_size",
+              "hand_gesture_action_face",
+              "palette_theme_motifs",
+              "product",
+              "person_hand_look",
+              "clothing",
+              "scene",
+              "foreground_props",
+              "depth_of_field",
+              "lighting",
+              "sound",
+              "shot_function_rhythm"
+            ],
+            "properties": {
+              "composition_camera_shot_size": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "hand_gesture_action_face": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "palette_theme_motifs": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "product": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "person_hand_look": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "clothing": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "scene": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "foreground_props": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "depth_of_field": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "lighting": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "sound": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              },
+              "shot_function_rhythm": {
+                "enum": [
+                  "keep",
+                  "same_category_same_color_new",
+                  "same_category_new",
+                  "same_category_other_instance",
+                  "same_theme_new",
+                  "adjustable",
+                  "redesign",
+                  "keep_close",
+                  "same_type_new"
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "creative_delta": {
+            "enum": [
+              "none",
+              "required"
+            ]
+          },
+          "variant_button": {
+            "type": "boolean"
+          },
+          "qa": {
+            "type": "object"
+          },
+          "analysis_prompt": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "anchors": {
+      "type": "object"
+    },
+    "user_edits": {
+      "type": "object"
+    },
+    "editing_after_generation": {
+      "type": "object"
+    },
+    "visual_checklist": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "qa_codes": {
+      "type": "object",
+      "required": [
+        "image",
+        "video"
+      ],
+      "properties": {
+        "image": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^FAIL_"
+          }
+        },
+        "video": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^FAIL_"
+          }
+        },
+        "billing": {
+          "type": "string"
+        }
+      }
+    },
+    "copy": {
+      "type": "object",
+      "required": [
+        "conservative",
+        "medium",
+        "bold",
+        "all_modes",
+        "sync"
+      ],
+      "properties": {
+        "conservative": {
+          "type": "object",
+          "required": [
+            "action",
+            "rule"
+          ],
+          "properties": {
+            "action": {
+              "enum": [
+                "light_synonym",
+                "same_points_new_wording",
+                "rewrite"
+              ]
+            },
+            "rule": {
+              "type": "string"
+            }
+          }
+        },
+        "medium": {
+          "type": "object",
+          "required": [
+            "action",
+            "rule"
+          ],
+          "properties": {
+            "action": {
+              "enum": [
+                "light_synonym",
+                "same_points_new_wording",
+                "rewrite"
+              ]
+            },
+            "rule": {
+              "type": "string"
+            }
+          }
+        },
+        "bold": {
+          "type": "object",
+          "required": [
+            "action",
+            "rule"
+          ],
+          "properties": {
+            "action": {
+              "enum": [
+                "light_synonym",
+                "same_points_new_wording",
+                "rewrite"
+              ]
+            },
+            "rule": {
+              "type": "string"
+            }
+          }
+        },
+        "all_modes": {
+          "type": "string"
+        },
+        "sync": {
+          "type": "string"
+        }
+      }
+    },
+    "brand_end_card": {
+      "type": "object",
+      "required": [
+        "applies_to",
+        "detect",
+        "action",
+        "subtitle",
+        "voiceover",
+        "if_absent"
+      ],
+      "properties": {
+        "applies_to": {
+          "type": "string"
+        },
+        "detect": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "voiceover": {
+          "type": "string"
+        },
+        "if_absent": {
+          "type": "string"
+        }
+      }
+    },
+    "one_click": {
+      "type": "object",
+      "required": [
+        "follows_mode",
+        "covers",
+        "order",
+        "resume_reuses_analysis_only_if"
+      ],
+      "properties": {
+        "follows_mode": {
+          "const": true
+        },
+        "covers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "order": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resume_reuses_analysis_only_if": {
+          "type": "string"
+        }
+      }
+    },
+    "prompts": {
+      "type": "object",
+      "required": [
+        "persist",
+        "video_first_frame_truth",
+        "refresh_from_images"
+      ],
+      "properties": {
+        "persist": {
+          "type": "string"
+        },
+        "video_first_frame_truth": {
+          "type": "string"
+        },
+        "refresh_from_images": {
+          "type": "string"
+        },
+        "spec_lines": {
+          "type": "string"
+        },
+        "qa_tolerance": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

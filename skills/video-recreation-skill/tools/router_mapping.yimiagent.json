@@ -1,0 +1,49 @@
+{
+  "mapping_version": "1.0",
+  "contract": "upstream_router_contract.json@1.0",
+  "deployment": "www.yimiagent.cn",
+  "principle": "The Skill sends capability requests only. Concrete provider/model choice, failover, credentials, billing and transport stay inside the server router (model 'auto'). This file maps capability names to public server entrypoints; it contains no provider/model names.",
+  "status_mapping": {
+    "SUCCEEDED": ["success"],
+    "FAILED": ["fail", "archive_error", "submission_unknown"],
+    "PENDING": ["any other status (waiting / running / ...)"]
+  },
+  "output_mapping": "task.outputs[] {type, url, sourceUrl?, poster?} -> outputs[] {type, uri: url, mime_type?, metadata: {sourceUrl, poster}}",
+  "error_mapping": "task.error -> error.message; error.retryable = true only for transport/upstream failures (router already fails over in auto mode); visual/QA failures are not router errors",
+  "capabilities": {
+    "image_generation": {
+      "kind": "upstream_router", "entrypoint": "POST /api/tasks",
+      "inputs": {"prompt": "prompt", "references": "refs[] (asset id or URL)", "aspect_ratio": "ratio", "resolution": "resolution"},
+      "poll": "GET /api/tasks/{id}", "quote": "POST /api/tasks/quote"
+    },
+    "image_edit": {
+      "kind": "upstream_router", "entrypoint": "POST /api/tasks",
+      "notes": "Recreation tasks pass recreationOf + shotIndex so the server compiles the SVML-derived execution prompt and attaches the approved product reference."
+    },
+    "video_generation": {
+      "kind": "upstream_router", "entrypoint": "POST /api/tasks",
+      "inputs": {"approved_keyframe": "firstFrame", "last_frame": "lastFrame", "motion_reference_video": "videoRefs[]", "audio_reference": "audioRefs[]", "native_audio": "generateAudio (default true: dialogue/SFX/BGM generated with the picture)", "duration_sec": "duration"},
+      "notes": "Recreation segments pass recreationOf + shotGroup; the server compiles the video prompt (structure + motion + 【声音】 block). A model without native audio returns a silent clip; media_edit then reports that the segment has no audio instead of hiding it.",
+      "long_video": "POST /api/tasks/multi (segment chaining by last frame, then media_edit)"
+    },
+    "audio_generation": {"kind": "upstream_router", "status": "superseded_in_main_workflow", "notes": "Dialogue/SFX/BGM are produced natively by video_generation."},
+    "speech_generation": {"kind": "upstream_router", "status": "superseded_in_main_workflow", "notes": "No post-production TTS in the default workflows (V2.2.1)."},
+    "lip_sync": {"kind": "upstream_router", "status": "native", "notes": "Satisfied by native-audio video_generation (mouth movement generated with the spoken line)."},
+    "text_analysis": {"kind": "upstream_router", "status": "server_workflow"},
+    "vision_analysis": {"kind": "upstream_router", "status": "server_workflow", "notes": "One shared GLOBAL MASTER, per-shot plans."},
+    "video_analysis": {"kind": "composite", "status": "server_workflow"},
+    "vision_qa": {"kind": "upstream_router", "status": "server_workflow", "notes": "QA result = {pass, fails[FAIL_*], reason}; no automatic retry (manual 重做 button, normal billing)."},
+    "shot_segmentation": {"kind": "local_deterministic", "status": "server_workflow"},
+    "asr": {"kind": "local_deterministic", "status": "server_workflow"},
+    "ocr": {"kind": "local_deterministic", "status": "server_workflow"},
+    "audio_stem_separation": {"kind": "local_deterministic", "status": "partial", "notes": "Event classification only, not true stem separation."},
+    "motion_analysis": {"kind": "upstream_router", "status": "partial", "notes": "Motion/camera text comes from vision_analysis per shot (job.shots[].motion/camera/transition)."},
+    "camera_trajectory_analysis": {"kind": "upstream_router", "status": "partial", "notes": "Same as motion_analysis."},
+    "depth_analysis": {"kind": "upstream_router", "status": "not_connected"},
+    "pose_tracking": {"kind": "upstream_router", "status": "not_connected"},
+    "video_to_video": {"kind": "upstream_router", "status": "via_video_generation", "notes": "Models that accept reference videos receive them through videoRefs[]."},
+    "media_edit": {"kind": "local_deterministic", "status": "server_workflow", "scope": "final edit only: transitions, subtitles aligned to spoken lines, colour grading, beat-sync cuts; keeps each segment's native audio; loudness normalisation"},
+    "audio_mix": {"kind": "local_deterministic", "status": "server_workflow", "scope": "crossfade at transitions, optional user-connected music bed, loudnorm. No generated voice/music/SFX."},
+    "compliance_review": {"kind": "composite", "status": "partial", "notes": "Platform end-card removal, platform text sanitizer, text de-burn of reference frames, QA FAIL_UNAUTHORIZED_TEXT."}
+  }
+}
