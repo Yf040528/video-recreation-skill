@@ -57,7 +57,7 @@
 ## 仓库结构
 
 ```
-SKILL.md              工作流主规范（从这里开始读）
+skills/video-recreation-skill/SKILL.md  工作流主规范（从这里开始读）
 ARCHITECTURE.md       三层架构：Skill / SVML / 执行
 CHANGELOG.md          版本演进历史
 specs/                各环节规范（生成、运动、连续性、音频时间轴、视觉质检…）
@@ -88,7 +88,7 @@ V2.2 强化了完整的二创管线：原片镜头切分 + ASR/OCR/音频分析�
 - V1 执行器文件在 `resources/legacy_v1/` 与 `executor/`。
 - 本 Skill 是**爆款二创**的权威工作流。后续工作流优化记录在此处与 `CHANGELOG.md`。
 
-阅读顺序：从 `SKILL.md` 开始，按其指引逐步加载 specs 与 schemas。V1.8.1 历史规则保留在仓库中，用于兼容性参考。
+阅读顺序：从 `skills/video-recreation-skill/SKILL.md` 开始，按其指引逐步加载 specs 与 schemas。V1.8.1 历史规则保留在仓库中，用于兼容性参考。
 
 ---
 
