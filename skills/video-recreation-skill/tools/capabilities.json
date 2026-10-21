@@ -1,0 +1,29 @@
+{
+  "version": "2.1",
+  "router": "upstream_intelligent_router",
+  "capabilities": [
+    "text_analysis",
+    "vision_analysis",
+    "video_analysis",
+    "image_generation",
+    "image_edit",
+    "video_generation",
+    "vision_qa",
+    "audio_generation",
+    "speech_generation",
+    "shot_segmentation",
+    "asr",
+    "ocr",
+    "audio_stem_separation",
+    "motion_analysis",
+    "depth_analysis",
+    "pose_tracking",
+    "camera_trajectory_analysis",
+    "video_to_video",
+    "lip_sync",
+    "audio_mix",
+    "media_edit",
+    "compliance_review"
+  ],
+  "rule": "Skill declares capability and requirements only. Upstream router selects provider/model and handles failover."
+}

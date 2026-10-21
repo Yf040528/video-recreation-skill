@@ -1,0 +1,7 @@
+{
+  "registry_version": "1.0",
+  "plugins": [
+    {"plugin_id":"upstream-model-router","version":"1.0","execution_kind":"upstream_router","capabilities":["text_analysis","vision_analysis","video_analysis","image_generation","image_edit","video_generation","vision_qa","audio_generation","speech_generation","asr","ocr","motion_analysis","depth_analysis","pose_tracking","camera_trajectory_analysis","video_to_video","lip_sync","compliance_review"]},
+    {"plugin_id":"ffmpeg-media","version":"1.0","execution_kind":"local_deterministic","capabilities":["media_edit","audio_mix","audio_stem_separation"]}
+  ]
+}

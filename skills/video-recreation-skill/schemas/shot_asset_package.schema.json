@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"shot_asset_package.schema.json",
+  "title":"Shot Asset Package",
+  "type":"object",
+  "required":["shot_id","version","assets","dependencies","status"],
+  "properties":{
+    "shot_id":{"type":"string","minLength":1},
+    "version":{"type":"string","minLength":1},
+    "status":{"enum":["planned","generating","qa","passed","failed","stale","approved"]},
+    "assets":{"type":"object","additionalProperties":{"type":["string","array","object","null"]}},
+    "dependencies":{"type":"array","items":{"type":"object","required":["asset_id","version"],"properties":{"asset_id":{"type":"string"},"version":{"type":"string"}},"additionalProperties":true}},
+    "qa_records":{"type":"array","items":{"type":"object"}},
+    "lineage":{"type":"array","items":{"type":"object"}}
+  },
+  "additionalProperties":true
+}

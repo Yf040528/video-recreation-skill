@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"motion_reference.schema.json",
+  "title":"Motion Reference",
+  "type":"object",
+  "required":["shot_id"],
+  "properties":{
+    "shot_id":{"type":"string"},
+    "camera_motion":{"type":"array","items":{"type":"string"}},
+    "subject_motion":{"type":"array","items":{"type":"string"}},
+    "speed_curve":{"type":"string"},
+    "focal_or_zoom_change":{"type":"string"},
+    "focus_change":{"type":"string"},
+    "depth_parallax":{"type":"string"},
+    "pose_trajectory":{"type":"string"},
+    "first_frame":{"type":["string","null"]},
+    "last_frame":{"type":["string","null"]},
+    "derived_assets":{"type":"array","items":{"type":"string"}}
+  },
+  "additionalProperties":true
+}

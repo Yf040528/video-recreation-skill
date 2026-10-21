@@ -1,0 +1,22 @@
+{
+  "name": "video-recreation-skills",
+  "owner": {
+    "name": "Yf040528",
+    "url": "https://github.com/Yf040528"
+  },
+  "metadata": {
+    "description": "Marketplace for video-recreation-skill: a model-agnostic workflow for recreating viral short videos (e-commerce / folklore / AI drama)",
+    "version": "2.2.0"
+  },
+  "plugins": [
+    {
+      "name": "video-recreation",
+      "description": "Recreate viral short videos: shot decomposition (ASR/OCR/audio analysis) → script rewrite → keyframe & video generation → five-level visual QC → FFmpeg assembly, with character/product consistency anchors to stop AI face & product drift",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/video-recreation-skill"
+      ]
+    }
+  ]
+}

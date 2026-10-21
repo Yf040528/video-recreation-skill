@@ -1,0 +1,281 @@
+{
+  "version": "2.2.22",
+  "principle": "用户写明的要求优先；用户没写的按所选力度的约定规则；生成后任何力度都可以继续用提示词和参考图修改。",
+  "action_vocabulary": {
+    "keep": "与原视频一致",
+    "same_category_same_color_new": "同类、同色系的新款",
+    "same_category_new": "同品类的新款新设计（可换颜色款式）",
+    "same_category_other_instance": "同类别的另一处 / 另一个实例",
+    "same_theme_new": "同题材的新款",
+    "adjustable": "可以调整",
+    "redesign": "重新设计",
+    "keep_close": "尽量接近原视频",
+    "same_type_new": "同类型的新版本"
+  },
+  "priority_order": [
+    {
+      "rank": 1,
+      "source": "frame_reference_image",
+      "name": "这一帧上传的参考图（参考图 2）",
+      "scope": "frame",
+      "note": "只对这一帧生效，冲突时以参考图为准"
+    },
+    {
+      "rank": 2,
+      "source": "film_anchor",
+      "name": "全片参考（设第 N 帧为全片参考 / 上传设为全片参考的图）",
+      "scope": "film",
+      "note": "人物、服装、手部、产品以它为准，高于各帧提示词（提示词没写或写的是旧样子都以它为准）"
+    },
+    {
+      "rank": 3,
+      "source": "frame_prompt_edit",
+      "name": "用户手动修改的这一帧提示词",
+      "scope": "frame",
+      "note": "与原方案逐句对比出的改动；整帧重写时以用户写的画面为准"
+    },
+    {
+      "rank": 4,
+      "source": "breakdown_request",
+      "name": "拆解时的自然语言描述",
+      "scope": "film",
+      "note": "点名要换的一定换；说“其他不变”则没点名的全部保持原样"
+    },
+    {
+      "rank": 5,
+      "source": "mode_defaults",
+      "name": "所选力度的默认规则",
+      "scope": "film",
+      "note": "只决定用户没有写到的部分"
+    },
+    {
+      "rank": 6,
+      "source": "locks",
+      "name": "结构锁定 / 风格意象锁 / 全片统一设定 / 禁止项",
+      "scope": "film",
+      "note": "与上面任何一项冲突时让路"
+    }
+  ],
+  "elements": {
+    "composition_camera_shot_size": "构图、机位、景别、主体位置",
+    "hand_gesture_action_face": "手的方向、手势、动作、是否露脸",
+    "palette_theme_motifs": "主色调、题材、寓意意象",
+    "product": "产品",
+    "person_hand_look": "人物 / 手部外观",
+    "clothing": "服装",
+    "scene": "场景 / 环境",
+    "foreground_props": "前景点缀、背景小道具、道具",
+    "depth_of_field": "景深",
+    "lighting": "光线",
+    "sound": "声音（人声 / 音效 / 背景音乐）",
+    "shot_function_rhythm": "镜头功能、剪辑节奏、台词时间"
+  },
+  "modes": {
+    "conservative": {
+      "label": "保守（完全复刻）",
+      "elements": {
+        "composition_camera_shot_size": "keep",
+        "hand_gesture_action_face": "keep",
+        "palette_theme_motifs": "keep",
+        "product": "keep",
+        "person_hand_look": "keep",
+        "clothing": "keep",
+        "scene": "keep",
+        "foreground_props": "keep",
+        "depth_of_field": "keep",
+        "lighting": "keep",
+        "sound": "keep_close",
+        "shot_function_rhythm": "keep"
+      },
+      "creative_delta": "none",
+      "variant_button": false,
+      "qa": {
+        "require_creative_delta": false,
+        "fail_if_changed": true
+      },
+      "analysis_prompt": "【本档规则（保守 = 完全复刻，优先于下面的旧写法）】除了用户点名要换的，原视频里的一切都保留：人物 / 手部、服装、产品、场景建筑、前景点缀、背景小道具、道具、景深、光线和颜色都与原镜头一致，replacements 全部 PRESERVE。creative_delta 只写“完全复刻（高清化、去除画面文字）”，不要自己加光线、时段、天气、前景、道具等任何变化；用户要求的改动照做并写进 creative_delta。声音：口播、音效、背景音乐都尽量接近原视频。"
+    },
+    "medium": {
+      "label": "中度（锁结构换同类新款）",
+      "elements": {
+        "composition_camera_shot_size": "keep",
+        "hand_gesture_action_face": "keep",
+        "palette_theme_motifs": "keep",
+        "product": "same_category_same_color_new",
+        "person_hand_look": "same_category_same_color_new",
+        "clothing": "same_category_same_color_new",
+        "scene": "same_category_other_instance",
+        "foreground_props": "same_theme_new",
+        "depth_of_field": "adjustable",
+        "lighting": "adjustable",
+        "sound": "same_type_new",
+        "shot_function_rhythm": "keep"
+      },
+      "creative_delta": "required",
+      "variant_button": true,
+      "qa": {
+        "require_creative_delta": true,
+        "product_may_differ_from_source": true
+      },
+      "analysis_prompt": "【本档规则（中度 = 锁结构锁风格、换同类同色系新款，优先于下面的旧写法）】保持不变：构图、机位、景别、主体位置与朝向、手的方向手势动作、是否露脸、主色调、题材场景类别、寓意意象、镜头功能和节奏。默认换成“同类、同色系的新款”（replacements 写 REPLACE，authorized_by 写“中度二创默认”，target 具体写出新款的样子，全片统一）：① 产品：同品类、同色系的新款（如红绳手链 → 另一款红色系手链，珠子和细节不同）；② 人物 / 手部：同类人物的新造型（性别、年龄段、气质同类，换脸型发型等；手部换肤色质感、指甲、饰品的同色系新款）；③ 服装：同类同色系新款；④ 场景环境：同类别的另一处；⑤ 前景点缀、背景小道具、道具：同题材的新款；⑥ 景深层次可以调整；⑦ 声音：同类型的新声音、新配乐、新音效。用户点名保留的元素照原样，用户点名换成什么就按用户的写。"
+    },
+    "bold": {
+      "label": "大胆（全新设计）",
+      "elements": {
+        "composition_camera_shot_size": "redesign",
+        "hand_gesture_action_face": "redesign",
+        "palette_theme_motifs": "redesign",
+        "product": "same_category_new",
+        "person_hand_look": "redesign",
+        "clothing": "redesign",
+        "scene": "redesign",
+        "foreground_props": "redesign",
+        "depth_of_field": "redesign",
+        "lighting": "redesign",
+        "sound": "redesign",
+        "shot_function_rhythm": "keep"
+      },
+      "creative_delta": "required",
+      "variant_button": true,
+      "qa": {
+        "require_creative_delta": true,
+        "product_may_differ_from_source": true
+      },
+      "analysis_prompt": "【本档规则（大胆 = 全新设计，优先于下面的旧写法）】只保留镜头功能、剪辑节奏和产品品类。默认全部换新（replacements 写 REPLACE，authorized_by 写“大胆二创默认”，全片统一）：① 产品：同品类的新款新设计（可以换颜色和款式，例如手链仍是手链）；② 人物 / 手部造型、服装、场景环境、构图机位景别、光线配色、前景点缀和道具全部重新设计；③ 声音：新的人声、配乐和音效设计，贴合新画面。用户点名保留的元素照原样，用户点名换成什么就按用户的写。"
+    }
+  },
+  "copy": {
+    "conservative": {
+      "action": "light_synonym",
+      "rule": "口播和画面文字基本照原文：意思、句式、长度都一样，只做极轻微的同义替换（避免与原视频文字完全雷同）；文案里提到的产品 / 人物 / 颜色照原样"
+    },
+    "medium": {
+      "action": "same_points_new_wording",
+      "rule": "同卖点、同结构、同作用，换一种说法；文案里提到的产品 / 人物 / 服装 / 颜色跟着中度换成的新款改写"
+    },
+    "bold": {
+      "action": "rewrite",
+      "rule": "保留每句的卖点和作用，重新写，句式和角度可以全新；文案里提到的产品 / 人物 / 颜色跟着新设计改写"
+    },
+    "all_modes": "长度与原句相近（便于对齐原视频节奏）；品牌名、店铺名、账号名、联系方式、平台引导一律去掉；用户在拆解描述里写的文案要求和手动改的字幕优先",
+    "sync": "每句口播只描述它所在镜头画面里正在发生的动作或出现的东西（如说“开门”必须落在开门的镜头），不得挪到别的镜头；生视频时按镜头时间说；后期字幕按视频里实际说话的时间对齐"
+  },
+  "one_click": {
+    "follows_mode": true,
+    "covers": [
+      "拆解",
+      "生图（视觉）",
+      "生视频（动作 / 声音 / 台词）",
+      "字幕",
+      "品牌片尾",
+      "剪辑合成"
+    ],
+    "order": [
+      "按镜头提取关键帧",
+      "按所选力度拆解（user_requests / keep_others 同样生效）",
+      "先生成并质检第一个产品镜头和第一个人物 / 服装镜头，作为全片产品参考和造型参考",
+      "其余镜头并行生成并逐张质检",
+      "相邻镜头合并成段生成视频（按镜头时间说台词）",
+      "剪辑合成（字幕按实际说话时间对齐，片尾字幕 www.yimiagent.cn）"
+    ],
+    "resume_reuses_analysis_only_if": "力度和拆解描述都没变；否则重新拆解"
+  },
+  "prompts": {
+    "persist": "每帧最后实际用于生成的提示词（与机器方案不同时）存到服务器：shot.user_scene / shot.user_motion，重新进入任务时恢复，保存二创文案时不会被机器方案覆盖",
+    "video_first_frame_truth": "生视频时首帧图片（已确认的二创图片）是外观的唯一标准：文字里的人物 / 服装 / 产品 / 场景描述与首帧不一致时以首帧为准；全片参考和服装替换同样作用于视频提示词",
+    "spec_lines": "生视频提示词必须写明整段时长、每个镜头约几秒、画面比例、分辨率、清晰度和帧率；生图提示词写明画面比例和分辨率",
+    "qa_tolerance": "产品只在明显换成别的东西、颜色明显不同、缺失或变形时判不通过，大小角度细节略有差异不算；光线按本帧实际使用的提示词检查",
+    "refresh_from_images": "「按图片更新提示词」：AI 看每帧已确认的二创图片，把生图 / 生视频提示词改成和图片一致（动作、运镜、台词保留）；旧版本记入 variants；按 AI 帮写价格 × 帧数扣费，失败的帧退回"
+  },
+  "brand_end_card": {
+    "applies_to": "all_modes",
+    "detect": "原视频最后几帧是品牌推广 / 店铺或账号页 / 抖音等平台搜索页、关注页、二维码、品牌 logo 片尾",
+    "action": "不复刻：按全片风格自由创作自己的片尾画面，画面里不出现任何原品牌、平台、账号、二维码、logo 或文字",
+    "subtitle": "www.yimiagent.cn",
+    "voiceover": "",
+    "if_absent": "原视频没有这类片尾就不加"
+  },
+  "anchors": {
+    "auto": "没有指定时，自动用第一张质检通过的同类帧作为产品参考 / 造型参考（参考图）",
+    "user_set": "用户点“设第 N 帧为全片参考”或把上传的参考图设为全片参考后：参考图 + 文字（第 N 帧的人物 / 服装描述）同时生效，优先级高于各帧提示词",
+    "single_reference_models": [],
+    "single_reference_note": "只能带 1 张参考图的模型拿不到全片参考图，只靠文字保持一致",
+    "frame_reference_overrides_anchor": true,
+    "garment_override": "全片参考生效时，本帧文字（二创画面 / 结构锁定 / 保留 / 全片统一设定）里的旧服装说法统一替换成全片参考的服装；参考图同时是产品和造型参考时，说明里写明两者都照它",
+    "look_text_excludes": "姿势、手指动作、光线、景深等只属于那一帧的描述不进入全片造型文字"
+  },
+  "user_edits": {
+    "diff": "与这一帧所有历史版本（原方案、换一版）逐句对比，只算用户真正写的部分",
+    "whole_rewrite_threshold": 0.5,
+    "color_edit_relaxes": [
+      "风格意象锁的主色",
+      "全片统一设定的视觉风格",
+      "参考图 1 的颜色",
+      "禁止项“不得改变主色调”"
+    ],
+    "look_edit_relaxes": [
+      "全片统一设定的人物 / 手部 / 服装",
+      "换新矩阵的人物 / 手部 / 服装"
+    ]
+  },
+  "editing_after_generation": {
+    "all_modes": true,
+    "tools": [
+      "修改提示词（修改并联动）",
+      "上传参考图 2",
+      "重做（可改提示词和参考图）",
+      "同步到其他帧",
+      "设为全片参考"
+    ],
+    "variant_modes": [
+      "medium",
+      "bold"
+    ]
+  },
+  "visual_checklist": [
+    "lighting",
+    "lighting_plan",
+    "lens",
+    "texture",
+    "weather_time",
+    "props",
+    "camera_move",
+    "subject_move",
+    "pace"
+  ],
+  "qa_codes": {
+    "image": [
+      "FAIL_STRUCTURE",
+      "FAIL_UNAUTHORIZED_CHANGE",
+      "FAIL_EXTRA_HAND",
+      "FAIL_PRESENCE",
+      "FAIL_COLLAGE_OUTPUT",
+      "FAIL_UNAUTHORIZED_TEXT",
+      "FAIL_PRODUCT_GEOMETRY",
+      "FAIL_COPY_SOURCE",
+      "FAIL_INSUFFICIENT_CREATIVE_DELTA",
+      "FAIL_SEMANTIC_FUNCTION",
+      "FAIL_STYLE_DRIFT",
+      "FAIL_BLURRY",
+      "FAIL_LIGHTING",
+      "FAIL_LOOK_DRIFT",
+      "FAIL_USER_EDIT_IGNORED"
+    ],
+    "video": [
+      "FAIL_SEMANTIC_FUNCTION",
+      "FAIL_PRESENCE",
+      "FAIL_UNAUTHORIZED_TEXT",
+      "FAIL_COLLAGE_OUTPUT",
+      "FAIL_EXTRA_HAND",
+      "FAIL_PRODUCT_GEOMETRY",
+      "FAIL_IDENTITY_DRIFT",
+      "FAIL_BLURRY",
+      "FAIL_NO_AUDIO",
+      "FAIL_MISSING_DIALOGUE",
+      "FAIL_DIALOGUE_MISMATCH",
+      "FAIL_UNPLANNED_SPEECH",
+      "FAIL_DIALOGUE_TIMING"
+    ],
+    "billing": "质检不向用户收费（平台承担，图片约 ¥0.01–0.02 / 次）"
+  }
+}
