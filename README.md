@@ -9,6 +9,29 @@
 
 ---
 
+## 安装（30 秒）
+
+### 方式一：Claude Code 插件（推荐）
+
+```
+/plugin marketplace add Yf040528/video-recreation-skill
+/plugin install video-recreation@video-recreation-skills
+```
+
+装完在 Claude Code 里直接说“做一条爆款二创”即可触发。
+
+### 方式二：通用 Skill 安装
+
+```
+npx skills add Yf040528/video-recreation-skill
+```
+
+如提示选择 Skill，选 `video-recreation-skill`。
+
+### 方式三：手动复制
+
+把 `skills/video-recreation-skill` 整个文件夹复制到你所用 Agent 的 skills 目录（Claude Code：`~/.claude/skills/`），或把 `skills/video-recreation-skill/SKILL.md` 内容作为自定义指令导入。
+
 ## 这是什么
 
 这是一个面向中文短视频创作的**二创（recreation）工作流规范**。它把「看到一条爆款视频，想做出自己的版本」这件事，拆成了机器可执行的步骤：拆解原片 → 重写脚本 → 生成分镜关键帧 → 图生视频 → 视觉质检 → 剪辑合成。
