@@ -1,5 +1,7 @@
 # VIDEO_AGENT_SKILL V2.2 — 爆款视频二创工作流
 
+[English version](./README.en.md)
+
 > 一条爆款视频 → 自动拆解/重写/生成/质检 → 可发布的二创成片。
 
 ![License](https://img.shields.io/badge/license-MIT-green)
