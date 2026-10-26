@@ -1,0 +1,65 @@
+# video-recreation-skill
+
+> Recreate a viral short video into your own publishable version: decompose the reference, rewrite the script, generate storyboard keyframes, turn images into video, run visual QA, and assemble the final cut. Character and product continuity anchors stop AI face and product drift across shots, with five-level visual QA and three recreation modes (conservative / medium / bold).
+
+## Install
+
+- Claude Code plugin (recommended):
+  - `/plugin marketplace add Yf040528/video-recreation-skill`
+  - `/plugin install video-recreation@video-recreation-skills`
+- Generic skill install:
+  - `npx skills add Yf040528/video-recreation-skill`
+- Manual install:
+  - Copy the `skills/video-recreation-skill` folder into your agent's skills directory (Claude Code: `~/.claude/skills/`), or import `skills/video-recreation-skill/SKILL.md` as a custom instruction.
+
+## Repository
+
+- [GitHub repository](https://github.com/Yf040528/video-recreation-skill)
+- [SKILL.md — the workflow specification](https://github.com/Yf040528/video-recreation-skill/blob/main/skills/video-recreation-skill/SKILL.md)
+- [README (Chinese)](https://github.com/Yf040528/video-recreation-skill/blob/main/README.md)
+- [README (English)](https://github.com/Yf040528/video-recreation-skill/blob/main/README.en.md)
+- [Plugin marketplace manifest](https://github.com/Yf040528/video-recreation-skill/blob/main/.claude-plugin/marketplace.json)
+- [Plugin manifest](https://github.com/Yf040528/video-recreation-skill/blob/main/.claude-plugin/plugin.json)
+
+## What it is for
+
+- E-commerce short videos: keep the selling-point structure of a reference hit, swap in your own product, person and scene.
+- AI comic / drama: character consistency control, storyboard planning, dialogue and lip-sync timing.
+- Folklore and traditional-culture videos: structured recreation for temple, zodiac-year, blessing and similar themes.
+- Product ads: product anchor images lock the product's appearance across shots so it does not drift.
+
+## How it works
+
+1. Decompose the reference video: shot splitting, ASR / OCR / audio analysis, keyframes with motion.
+2. Rewrite the script and storyboard under one of three modes: conservative (full-structure recreation), medium (same structure and style, swapped instances), bold (selling points kept, visuals and copy rewritten).
+3. Lock global character, style and product anchors before generation.
+4. Generate per-shot images, run visual QA and targeted retry on failed shots only.
+5. Generate image-to-video clips from approved keyframes, with native dialogue, sound effects and music.
+6. Assemble with FFmpeg (transitions, subtitles, colour grading, beat-sync cuts), run a final check, and output a versioned per-shot asset pack.
+
+## Design principles
+
+- Model-agnostic: the skill declares what capability is needed; the upstream router decides which model serves it and how to fail over.
+- Specification over prose: executors read machine-readable files under `specs/` and `schemas/` (including SVML), not only natural-language descriptions.
+- Human edits win: a user's own prompts and reference images override automatic rules.
+- Failures are visible: a failed QA check reports a specific failure code instead of silently skipping the shot.
+
+## Web workflow
+
+- [yimiagent.cn — visual video-agent workspace](https://www.yimiagent.cn)
+- [Models](https://www.yimiagent.cn/models)
+- [Pricing](https://www.yimiagent.cn/pricing)
+- [Guides](https://www.yimiagent.cn/guides)
+- [Viral remix scene](https://www.yimiagent.cn/scenes/viral-remix)
+- [Comic drama scene](https://www.yimiagent.cn/scenes/comic-drama)
+- [Image-to-video feature](https://www.yimiagent.cn/features/image-to-video)
+- [Infinite canvas feature](https://www.yimiagent.cn/features/infinite-canvas)
+- [Watermark removal feature](https://www.yimiagent.cn/features/watermark-removal)
+
+The skill specification itself can be used offline without logging in to the platform. The web workflow above is the no-code way to run the same pipeline.
+
+## Optional
+
+- [CHANGELOG](https://github.com/Yf040528/video-recreation-skill/blob/main/CHANGELOG.md)
+- [Architecture](https://github.com/Yf040528/video-recreation-skill/blob/main/ARCHITECTURE.md)
+- License: MIT
