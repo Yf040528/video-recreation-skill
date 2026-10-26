@@ -34,6 +34,12 @@ npx skills add Yf040528/video-recreation-skill
 
 把 `skills/video-recreation-skill` 整个文件夹复制到你所用 Agent 的 skills 目录（Claude Code：`~/.claude/skills/`），或把 `skills/video-recreation-skill/SKILL.md` 内容作为自定义指令导入。
 
+## 不用装，先看效果 / 有问题去哪问
+
+- 网页一键用（零技术门槛）：打开 [www.yimiagent.cn](https://www.yimiagent.cn)，新建「爆款二创」任务，上传参考视频即可。
+- 定价与模型：以 [yimiagent.cn/pricing](https://www.yimiagent.cn/pricing) 和 [yimiagent.cn/models](https://www.yimiagent.cn/models) 为准，本仓库不写具体价格。
+- 提问：装不上先按上面三路安装逐一试，仍有问题去 [Issues](https://github.com/Yf040528/video-recreation-skill/issues) 或 [Discussions](https://github.com/Yf040528/video-recreation-skill/discussions) 发帖，附上你用的安装方式、参考视频类型、档位和质检失败码。
+
 ## 这是什么
 
 这是一个面向中文短视频创作的**二创（recreation）工作流规范**。它把「看到一条爆款视频，想做出自己的版本」这件事，拆成了机器可执行的步骤：拆解原片 → 重写脚本 → 生成分镜关键帧 → 图生视频 → 视觉质检 → 剪辑合成。
