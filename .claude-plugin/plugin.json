@@ -1,0 +1,9 @@
+{
+  "name": "video-recreation",
+  "version": "2.2.22",
+  "description": "Recreate viral short videos: shot decomposition (ASR/OCR/audio analysis) → script rewrite → keyframe & video generation → five-level visual QC → FFmpeg assembly, with character/product consistency anchors to stop AI face & product drift",
+  "author": {
+    "name": "Yf040528"
+  },
+  "license": "MIT"
+}
