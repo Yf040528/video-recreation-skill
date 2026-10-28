@@ -1,7 +1,7 @@
 ---
 name: video-recreation-skill
 description: Recreate viral short videos (TikTok / 抖音 — 风水, 民俗, 带货, product ads) for Chinese e-commerce and AI comic/drama channels. Turns one reference video into a recreated script, storyboard keyframes, image-to-video clips and a finished FFmpeg cut, with character and product continuity locks, per-shot visual QA, targeted retry, and an automatic brand end card. Use when deconstructing a competitor video, planning a recreation, keeping a person or product consistent across shots, or when someone asks how to make a 爆款二创 video. Runs on the visual production workspace at www.yimiagent.cn.
-version: 2.2.22
+version: 2.2.23
 ---
 
 # Video Agent Director Skill
@@ -90,6 +90,9 @@ Image-to-video models generate sound well, so sound is produced **together with 
 - **Edit plan (剪辑方案, V2.2.6)** — For edit-only and canvas edits, an analysis model first turns the user's editing brief or script into a structured plan: per-cut transitions with durations, numeric grade parameters (brightness / contrast / saturation / temperature / tint / highlights / shadows / sharpen / grain / vignette), shot-level subtitles, output spec (size / fps / bitrate), target duration with last-frame hold, explicit beat-sync. FFmpeg executes the plan deterministically. Requests that need media we don't have (SFX, music files) are listed as "未执行", never silently skipped or invented. Without a plan, edit-only uses professional defaults: a short dissolve, light unified grade, sound continuity.
 - **Standard edit defaults (V2.2.7)** — users who don't understand editing parameters get a standardised result; users who do can adjust from these values in the plan dialog. Output: portrait 1080×1920 (landscape sources 1920×1080), 30 fps, constant quality CRF 18 (x264 preset medium). A user-specified bitrate never goes below the quality floor (≈8 Mbps at 1080×1920·30 fps, scaled by pixels × fps). Grade: light unified grade = contrast 3, saturation 5, light luma-only sharpen (unsharp 0.4). Parameter mapping follows common editors (brightness 2 → +0.02, contrast 7 → ×1.07, sharpen 33 ≈ unsharp 0.5, vignette 50 ≈ PI/6). Transitions: 0.6 s dissolve. Empty fields mean "not specified" (an empty total duration follows the material; it is never clamped to 1 s). Subtitles follow the fixed subtitle style above.
 - **中度 recreation = structure lock + style & motif lock (V2.2.9)** — 中度 keeps the source's structure **and** its style: main palette (same colour family, e.g. red stays red, gold stays gold), theme and scene category (a red-walled temple stays a red-walled temple or the same class of Chinese architecture; a Buddhist statue stays a Buddhist statue), symbolic motifs tied to the product (e.g. red sleeve / red string → 本命年 luck, temple and Buddha → blessing), and mood and rendering. Only the specific instance changes: another temple of the same kind, a different red knit sleeve, a different light direction, time of day or weather, same-theme foreground props. Swapping category or palette (temple → modern room, red → blue-grey) is a QA failure `FAIL_STYLE_DRIFT`. The rule lives in the shared base instructions, because per-shot plans are written in parallel with the global analysis. Analysis output adds `style_lock {palette, theme, motifs[], mood}`.
+- **Source actions from motion strips (V2.2.23)** — A single keyframe cannot show an action such as "the cat bites the snack and the child cries". Before analysis, each shot is sampled as a 4-frame time strip, and a vision model writes `story` plus per-shot `source_action` / `source_cause`. These feed the analysis (each motion must reproduce the action), a top-priority 【剧情事件】 block in video prompts, and video QA (`FAIL_SEMANTIC_FUNCTION` when the key action does not happen). Old jobs are back-filled in the background when opened.
+  - The music description adds BPM (onset autocorrelation) and an energy level.
+  - Sound tagging retries, and profiles with no sound info are re-analysed.
 - **Prompts follow the confirmed images (V2.2.21)** — `recreation_policy.json` → `prompts`.
   - The prompt actually used for each generation is persisted (`user_scene` / `user_motion`), restored on re-entry, and shown in the saved script. Machine re-renders no longer wipe user edits.
   - Video prompts treat the first frame (the confirmed recreated image) as the single source of truth for appearance, and they also carry the film anchor and the garment override.
@@ -220,4 +223,4 @@ For a production job, prefer these artifacts:
 - Per-shot asset/version package validated by `schemas/shot_asset_package.schema.json`.
 
 ## Compatibility
-`resources/VIDEO_RECREATION_SKILL_V1.8.1.md` is retained as the detailed legacy rulebook.
+`resources/VIDEO_RECREATION_SKILL_V1.8.1.md` is retained as the detailed legacy rulebook. Existing `bracelet_regression` assets are retained under `examples/` as a regression fixture.

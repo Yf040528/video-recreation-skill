@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.2.23 — 2026-10-07
+- **Source motion strips → story and per-shot actions**, carried into analysis, video prompt (【剧情事件】) and video QA.
+- **Music profile** adds BPM and energy; sound tagging retries.
+- MP4 outputs are saved with faststart. The canvas no longer shows 「创作前先创建任务」.
+
 ## 2.2.22 — 2026-10-07
 - **Video prompts carry 【时长与规格】**: segment duration, approximate seconds per shot, aspect ratio, resolution, clarity and frame rate. Image prompts state ratio and resolution.
 - **QA tolerance**:
