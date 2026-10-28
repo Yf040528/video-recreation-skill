@@ -491,6 +491,12 @@
         },
         "qa_tolerance": {
           "type": "string"
+        },
+        "source_events": {
+          "type": "string"
+        },
+        "music_profile": {
+          "type": "string"
         }
       }
     }
