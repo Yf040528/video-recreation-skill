@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.2.24 — 2026-10-07
+- **Video essentials** (action / sound effects / background music) codified in `video_essentials`.
+- **Opt-in 「使用原视频背景音乐」**, used by video prompts, one-click and the final edit (source audio at original timing, no beat shifting).
+
 ## 2.2.23 — 2026-10-07
 - **Source motion strips → story and per-shot actions**, carried into analysis, video prompt (【剧情事件】) and video QA.
 - **Music profile** adds BPM and energy; sound tagging retries.

@@ -18,7 +18,8 @@
     "copy",
     "brand_end_card",
     "one_click",
-    "prompts"
+    "prompts",
+    "video_essentials"
   ],
   "properties": {
     "version": {
@@ -496,6 +497,39 @@
           "type": "string"
         },
         "music_profile": {
+          "type": "string"
+        }
+      }
+    },
+    "video_essentials": {
+      "type": "object",
+      "required": [
+        "action",
+        "sfx",
+        "bgm",
+        "spec"
+      ],
+      "properties": {
+        "action": {
+          "type": "object",
+          "required": [
+            "rule"
+          ]
+        },
+        "sfx": {
+          "type": "object",
+          "required": [
+            "rule"
+          ]
+        },
+        "bgm": {
+          "type": "object",
+          "required": [
+            "rule",
+            "option"
+          ]
+        },
+        "spec": {
           "type": "string"
         }
       }
