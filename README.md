@@ -1,8 +1,8 @@
-# VIDEO_AGENT_SKILL V2.2 — 爆款视频二创工作流
+# video-recreation-skill（VIDEO_AGENT_SKILL V2.2）— 爆款视频二创工作流
 
 [English version](./README.en.md)
 
-> 一条爆款视频 → 自动拆解/重写/生成/质检 → 可发布的二创成片。
+> 五级质检 + 人物/商品一致性锚点 + 品牌片尾：一条爆款视频 → 自动拆解/重写/生成/质检 → 可发布的二创成片。
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Version](https://img.shields.io/badge/version-2.2-blue)
@@ -10,6 +10,19 @@
 ![Platform](https://img.shields.io/badge/platform-www.yimiagent.cn-orange)
 
 ---
+
+## 和同类 Skill 的区别
+
+|  | video-recreation-skill（本仓库） | 常见的通用复刻 Skill |
+|---|---|---|
+| 质检 | 五级质检：脚本 → 图片 → 视频 → 音频 → 成片，失败阻断下游并报失败码 | 多数只给提示词，没有质检关卡和失败码 |
+| 人物 / 商品一致性 | 全局人物锚点 + 服装锚点 + 商品锚点，跨镜头强制一致，漂移则质检失败 | 只有“保留关系”原则，没有锚点机制 |
+| 品牌片尾 | 原片末尾的品牌 / 店铺 / 关注页自动替换成干净品牌片尾 | 无 |
+| 二创档位 | 保守 / 中度 / 大胆三档 + 元素级替换表 | 只有“保留骨架、换外皮”一句话策略 |
+| 场景 | 带货、风水 / 民俗、AI 漫剧、产品广告各有专属流程 | 通用，不分场景 |
+| 形态 | 厚规范（SKILL + specs + schemas + 回归用例）+ 网页工作台一键用 | 薄 Skill，或只给提示词、不出成片 |
+
+> 上表“常见的通用复刻 Skill”指 2026-11-07 核对过的同类公开仓库的共性，不是针对某一家的逐项断言。
 
 ## 安装（30 秒）
 
@@ -39,6 +52,14 @@ npx skills add Yf040528/video-recreation-skill
 - 网页一键用（零技术门槛）：打开 [www.yimiagent.cn](https://www.yimiagent.cn)，新建「爆款二创」任务，上传参考视频即可。
 - 定价与模型：以 [yimiagent.cn/pricing](https://www.yimiagent.cn/pricing) 和 [yimiagent.cn/models](https://www.yimiagent.cn/models) 为准，本仓库不写具体价格。
 - 提问：装不上先按上面三路安装逐一试，仍有问题去 [Issues](https://github.com/Yf040528/video-recreation-skill/issues) 或 [Discussions](https://github.com/Yf040528/video-recreation-skill/discussions) 发帖，附上你用的安装方式、参考视频类型、档位和质检失败码。
+
+## 支持的模型（网页工作台已上线，以 /models 为准）
+
+Skill 本身不绑定模型：它只声明「需要什么能力」，由 yimiagent.cn 上游路由按能力从以下模型中选择，具体某条任务用哪个模型由路由决定，不由 Skill 指定。以下是在 [yimiagent.cn/models](https://www.yimiagent.cn/models) 上 2026-11-07 10:10 核对时已上线的模型（共 22 个），增减以该页为准，本仓库不写具体价格：
+
+- **生视频**：Seedance 2.0 Mini、Seedance 2.0 Fast、Seedance 2.0、Seedance 2.5 Image to Video、Wan 3.0、HappyHorse 1.1 Image-to-Video、MiniMax H3、MiniMax H3 Max
+- **生图（分镜关键帧）**：GPT Image 2.5、GPT-Image-2、Gemini-3-Pro-Image（Nano Banana Pro）、Gemini-3.1-Flash-Image（Nano Banana 2）、Nano Banana 2.1、Ideogram 4.5
+- **对话 / 分析（拆解、脚本与文本处理）**：GPT-5.6 Sol、GPT-6.1 Sol、doubao-seed-2-1-turbo、doubao-seed-2-1-pro、Qwen3 VL Plus、Qwen3.7 Plus、Gemini 3.8 Flash、Claude Opus 5.5
 
 ## 这是什么
 

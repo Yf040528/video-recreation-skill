@@ -1,6 +1,6 @@
-# VIDEO_AGENT_SKILL V2.2 — Viral Short-Video Recreation Workflow
+# video-recreation-skill (VIDEO_AGENT_SKILL V2.2) — Viral Short-Video Recreation Workflow
 
-> One viral video → automatic decomposition / rewriting / generation / QA → a publishable recreated video.
+> Five-level QA + character/product consistency anchors + brand end card: one viral video → automatic decomposition / rewriting / generation / QA → a publishable recreated video.
 
 [中文版 README](./README.md)
 
@@ -10,6 +10,19 @@
 ![Platform](https://img.shields.io/badge/platform-www.yimiagent.cn-orange)
 
 ---
+
+## How this differs from generic recreation skills
+
+|  | video-recreation-skill (this repo) | Typical generic recreation skills |
+|---|---|---|
+| QA | Five-level QA: script → image → video → audio → final film; a failure blocks downstream steps and reports a failure code | Mostly prompts only, with no QA gates or failure codes |
+| Character / product consistency | Global character + costume + product anchors, enforced across shots; drift fails QA | Only a "keep the relationship" principle, with no anchor mechanism |
+| Brand end card | A brand / shop / follow card at the end of the original is replaced with a clean brand end card | None |
+| Recreation modes | Conservative / medium / bold, plus an element-level replacement table | Only a one-line "keep the skeleton, swap the skin" strategy |
+| Scenarios | Dedicated flows for e-commerce, folklore / traditional culture, AI comic/drama and product ads | Generic, with no scenario-specific flows |
+| Form | A thick specification (SKILL + specs + schemas + regression cases) plus one-click use on the web workspace | A thin skill, or prompts only, with no finished film |
+
+> "Typical generic recreation skills" above summarises the common traits of similar public repositories checked on 2026-11-07, not a per-repo verdict.
 
 ## Install (30 seconds)
 
@@ -35,6 +48,14 @@ If prompted to pick a skill, choose `video-recreation-skill`.
 Copy the whole `skills/video-recreation-skill` folder into your agent's skills directory (Claude Code: `~/.claude/skills/`), or import `skills/video-recreation-skill/SKILL.md` as a custom instruction.
 
 ---
+
+## Supported models (live on the web workspace; see /models)
+
+The skill itself is model-agnostic: it only declares what capability is needed, and the upstream router on yimiagent.cn picks a model from the list below for each task. The list below is what was live on [yimiagent.cn/models](https://www.yimiagent.cn/models) when checked at 10:10 on 2026-11-07 (22 models in total); additions or removals follow that page, and this repository states no prices:
+
+- **Video**: Seedance 2.0 Mini, Seedance 2.0 Fast, Seedance 2.0, Seedance 2.5 Image to Video, Wan 3.0, HappyHorse 1.1 Image-to-Video, MiniMax H3, MiniMax H3 Max
+- **Image (storyboard keyframes)**: GPT Image 2.5, GPT-Image-2, Gemini-3-Pro-Image (Nano Banana Pro), Gemini-3.1-Flash-Image (Nano Banana 2), Nano Banana 2.1, Ideogram 4.5
+- **Chat / analysis (decomposition, scripting and text work)**: GPT-5.6 Sol, GPT-6.1 Sol, doubao-seed-2-1-turbo, doubao-seed-2-1-pro, Qwen3 VL Plus, Qwen3.7 Plus, Gemini 3.8 Flash, Claude Opus 5.5
 
 ## What is this
 
