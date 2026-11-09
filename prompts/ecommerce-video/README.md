@@ -2,7 +2,7 @@
 
 > 本目录是 [video-recreation-skill](../../README.md) 的一部分：爆款视频复刻 / 二创工作流 + 电商视频提示词模板。
 
-**39 个电商品类 × 7 种爆款视频结构，共 285 个中文 AI 视频提示词模板**，可直接用于 Seedance、可灵 Kling、万相 Wan、MiniMax、Sora 等图生视频 / 文生视频模型，做抖音、快手、视频号、小红书带货短视频。
+**39 个电商品类 × 7 种爆款视频结构（273 个）+ 6 个通用模板，共 285 个中文 AI 视频提示词模板**，可直接用于 Seedance、可灵 Kling、万相 Wan、MiniMax、Sora 等图生视频 / 文生视频模型，做抖音、快手、视频号、小红书带货短视频。
 
 不想自己拼提示词？在 [FrameFlow（yimiagent.cn）](https://yimiagent.cn/?utm_source=github&utm_medium=repo-prompts&utm_campaign=video-recreation-skill) 的无限画布里，图生视频节点下方点「模板」即可选用全部模板，或点「AI 帮写」把一句话扩写成完整提示词；也支持 [爆款视频复刻](https://yimiagent.cn/features/viral-video-recreate?utm_source=github&utm_medium=repo-prompts&utm_campaign=video-recreation-skill)：上传爆款视频和你的产品图，AI 只换产品、保留原片镜头和节奏。
 

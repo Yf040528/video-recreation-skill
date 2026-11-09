@@ -121,7 +121,7 @@ skills/video-recreation-skill/SKILL.md  工作流主规范（从这里开始读�
 ARCHITECTURE.md       三层架构：Skill / SVML / 执行
 CHANGELOG.md          版本演进历史
 specs/                各环节规范（生成、运动、连续性、音频时间轴、视觉质检…）
- schemas/              机器可读产物定义（SVML、任务、生成请求、质检结果…）
+schemas/              机器可读产物定义（SVML、任务、生成请求、质检结果…）
 executor/             参考适配器（FrameFlow 公开 API）与校验工具
 tools/                能力声明与 API 映射
 prompts/              电商视频提示词模板（39 品类 × 7 结构）

@@ -4,7 +4,7 @@
 
 Built by FrameFlow. FrameFlow is the product name of yimiagent.cn; both names refer to the same platform (https://yimiagent.cn/?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill).
 
-Includes 285 e-commerce video prompt templates (39 product categories × 7 viral structures) in `prompts/ecommerce-video/`.
+Includes 285 e-commerce video prompt templates (39 product categories × 7 viral structures = 273, plus 6 general templates) in `prompts/ecommerce-video/`.
 
 ## Install
 
