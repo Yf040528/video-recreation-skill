@@ -1,12 +1,19 @@
 {
-  "contract_version":"1.0",
-  "entrypoint":"upstream_router.execute",
-  "request_schema":"../schemas/generation_request.schema.json",
-  "response":{
-    "required":["request_id","status"],
-    "status_values":["SUCCEEDED","FAILED","PENDING"],
-    "success_outputs":"array of {type, uri, mime_type?, metadata?}",
-    "failure_error":"{code, message, retryable}"
+  "contract_version": "1.0",
+  "entrypoint": "upstream_router.execute",
+  "request_schema": "../schemas/generation_request.schema.json",
+  "response": {
+    "required": [
+      "request_id",
+      "status"
+    ],
+    "status_values": [
+      "SUCCEEDED",
+      "FAILED",
+      "PENDING"
+    ],
+    "success_outputs": "array of {type, uri, mime_type?, metadata?}",
+    "failure_error": "{code, message, retryable}"
   },
-  "integration_note":"Map this logical contract to the server's existing intelligent routing layer. Do not hard-code provider/model names into the Skill."
+  "integration_note": "Map this logical contract to any generation backend. The reference adapter targets the FrameFlow public API (executor/router_adapter_yimiagent.py)."
 }

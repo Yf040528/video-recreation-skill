@@ -6,12 +6,12 @@
   },
   "metadata": {
     "description": "Marketplace for video-recreation-skill: a model-agnostic workflow for recreating viral short videos (e-commerce / folklore / AI drama)",
-    "version": "2.2.0"
+    "version": "2.2.25"
   },
   "plugins": [
     {
       "name": "video-recreation",
-      "description": "Recreate viral short videos: shot decomposition (ASR/OCR/audio analysis) → script rewrite → keyframe & video generation → five-level visual QC → FFmpeg assembly, with character/product consistency anchors to stop AI face & product drift",
+      "description": "Recreate viral short videos: shot decomposition (ASR/OCR/audio analysis) → script rewrite → keyframe & video generation → five-level visual QC → FFmpeg assembly, with character/product consistency anchors to stop AI face & product drift. Includes 285 e-commerce video prompt templates. By FrameFlow (yimiagent.cn).",
       "source": "./",
       "strict": false,
       "skills": [

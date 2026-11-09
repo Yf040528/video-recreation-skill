@@ -1,5 +1,9 @@
 # video-recreation-skill (VIDEO_AGENT_SKILL V2.2) — Viral Short-Video Recreation Workflow
 
+> Built by **FrameFlow**. FrameFlow is the product name of [yimiagent.cn](https://yimiagent.cn/?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill); they are the same platform.
+>
+> **E-commerce video prompt templates: see [prompts/ecommerce-video](./prompts/ecommerce-video/README.md)** — 285 Chinese prompts (39 product categories × 7 viral structures) for Seedance, Kling, Wan, MiniMax and other video models. Standalone repository: [Yf040528/ecommerce-video-prompts](https://github.com/Yf040528/ecommerce-video-prompts).
+
 > Five-level QA + character/product consistency anchors + brand end card: one viral video → automatic decomposition / rewriting / generation / QA → a publishable recreated video.
 
 [中文版 README](./README.md)
@@ -7,7 +11,7 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Version](https://img.shields.io/badge/version-2.2-blue)
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
-![Platform](https://img.shields.io/badge/platform-www.yimiagent.cn-orange)
+![Platform](https://img.shields.io/badge/platform-FrameFlow%20(yimiagent.cn)-orange)
 
 ---
 
@@ -20,7 +24,7 @@
 | Brand end card | A brand / shop / follow card at the end of the original is replaced with a clean brand end card | None |
 | Recreation modes | Conservative / medium / bold, plus an element-level replacement table | Only a one-line "keep the skeleton, swap the skin" strategy |
 | Scenarios | Dedicated flows for e-commerce, folklore / traditional culture, AI comic/drama and product ads | Generic, with no scenario-specific flows |
-| Form | A thick specification (SKILL + specs + schemas + regression cases) plus one-click use on the web workspace | A thin skill, or prompts only, with no finished film |
+| Form | A thick specification (SKILL + specs + schemas + prompt templates) plus one-click use on the web workspace | A thin skill, or prompts only, with no finished film |
 
 > "Typical generic recreation skills" above summarises the common traits of similar public repositories checked on 2026-11-07, not a per-repo verdict.
 
@@ -51,7 +55,7 @@ Copy the whole `skills/video-recreation-skill` folder into your agent's skills d
 
 ## Supported models (live on the web workspace; see /models)
 
-The skill itself is model-agnostic: it only declares what capability is needed, and the upstream router on yimiagent.cn picks a model from the list below for each task. The list below is what was live on [yimiagent.cn/models](https://www.yimiagent.cn/models?utm_source=github) when checked at 10:10 on 2026-11-07 (22 models in total); additions or removals follow that page, and this repository states no prices:
+The skill itself is model-agnostic: it only declares what capability is needed, FrameFlow's web workspace can auto-match a model by capability, while public API calls use the model you specify. The list below is what was live on [yimiagent.cn/models](https://yimiagent.cn/models?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill) when checked at 10:10 on 2026-11-07 (22 models in total); additions or removals follow that page, and this repository states no prices:
 
 - **Video**: Seedance 2.0 Mini, Seedance 2.0 Fast, Seedance 2.0, Seedance 2.5 Image to Video, Wan 3.0, HappyHorse 1.1 Image-to-Video, MiniMax H3, MiniMax H3 Max
 - **Image (storyboard keyframes)**: GPT Image 2.5, GPT-Image-2, Gemini-3-Pro-Image (Nano Banana Pro), Gemini-3.1-Flash-Image (Nano Banana 2), Nano Banana 2.1, Ideogram 4.5
@@ -89,7 +93,7 @@ Use cases:
 
 ### Option A: Web, no code
 
-1. Open **[www.yimiagent.cn](https://www.yimiagent.cn/?utm_source=github)**
+1. Open **FrameFlow ([yimiagent.cn](https://yimiagent.cn/?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill))**
 2. Create a "viral recreation" task and upload a reference video.
 3. Pick a mode (conservative / medium / bold) and fill in your product and requirements.
 4. Generate in one run: decomposition → script → keyframes → video → QA → final cut.
@@ -100,7 +104,7 @@ This repository is a standard skill specification (`SKILL.md` + `specs/` + `sche
 
 - **WorkBuddy**: `git clone` this repository to `~/.workbuddy/skills/video-recreation/`
 - **Claude / Cursor**: import the `SKILL.md` content as a system prompt or custom instruction
-- **Custom agents**: read the machine-readable files under `specs/` and `schemas/` and implement your own executor (see `executor/router_adapter_yimiagent.py`)
+- **Custom agents**: read the machine-readable files under `specs/` and `schemas/` and implement your own executor ; image/video generation can call the FrameFlow public API (`https://yimiagent.cn/v1`, API Key) — see `executor/router_adapter_yimiagent.py`
 
 ## Repository structure
 
@@ -112,7 +116,7 @@ specs/                Per-stage specifications (generation, motion, continuity, 
 schemas/              Machine-readable output definitions (SVML, tasks, generation requests, QA results…)
 executor/             Reference executor and upstream routing adapters
 tools/                Capability declarations and routing maps
-resources/            V1.8.1 historical rules
+prompts/              E-commerce video prompt templates (39 categories × 7 structures)
 ```
 
 ## Design principles
@@ -132,17 +136,16 @@ V2.2 strengthens the full recreation pipeline: original shot splitting + ASR/OCR
 
 **V2.2.1 (2026-10-04)**
 - Dialogue, sound effects and BGM are generated natively in the image-to-video step. FFmpeg only edits: transitions, subtitles, colour grading, beat-sync cuts.
-- The capability → server routing map is in `tools/router_mapping.yimiagent.json` (adapter: `executor/router_adapter_yimiagent.py`).
-- V1 executor files are in `resources/legacy_v1/` and `executor/`.
+- The capability → FrameFlow public API map is in `tools/router_mapping.yimiagent.json` (adapter: `executor/router_adapter_yimiagent.py`).
 - This skill is the authoritative workflow for viral recreation. Further workflow changes are recorded here and in `CHANGELOG.md`.
 
-Reading order: start from `skills/video-recreation-skill/SKILL.md`, then follow its pointers into specs and schemas. V1.8.1 historical rules are kept in the repository for compatibility reference.
+Reading order: start from `skills/video-recreation-skill/SKILL.md`, then follow its pointers into specs and schemas. **V2.2.25 (2026-11-09)**: added 285 e-commerce video prompt templates; the reference adapter now uses the FrameFlow public API (API Key); legacy rulebooks and regression fixtures removed.
 
 ---
 
 ## About
 
-This workflow runs on **[www.yimiagent.cn](https://www.yimiagent.cn/?utm_source=github)** — a visual video-agent workspace supporting text-to-image, image-to-image, image-to-video, FFmpeg editing and assembly, and industry workflows for e-commerce, AI comic/drama and viral recreation.
+This workflow runs on **FrameFlow ([yimiagent.cn](https://yimiagent.cn/?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill))** — FrameFlow is the product name of yimiagent.cn, the same platform — a visual video-agent workspace supporting text-to-image, image-to-image, image-to-video, FFmpeg editing and assembly, and industry workflows for e-commerce, AI comic/drama and viral recreation.
 
 ## License
 

@@ -2,6 +2,10 @@
 
 > Recreate a viral short video into your own publishable version: decompose the reference, rewrite the script, generate storyboard keyframes, turn images into video, run visual QA, and assemble the final cut. Character and product continuity anchors stop AI face and product drift across shots, with five-level visual QA and three recreation modes (conservative / medium / bold).
 
+Built by FrameFlow. FrameFlow is the product name of yimiagent.cn; both names refer to the same platform (https://yimiagent.cn/?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill).
+
+Includes 285 e-commerce video prompt templates (39 product categories × 7 viral structures) in `prompts/ecommerce-video/`.
+
 ## Install
 
 - Claude Code plugin (recommended):
@@ -46,17 +50,23 @@
 
 ## Web workflow
 
-- [yimiagent.cn — visual video-agent workspace](https://www.yimiagent.cn/?utm_source=github)
-- [Models](https://www.yimiagent.cn/models?utm_source=github)
-- [Pricing](https://www.yimiagent.cn/pricing?utm_source=github)
-- [Guides](https://www.yimiagent.cn/guides?utm_source=github)
-- [Viral remix scene](https://www.yimiagent.cn/scenes/viral-remix?utm_source=github)
-- [Comic drama scene](https://www.yimiagent.cn/scenes/comic-drama?utm_source=github)
-- [Image-to-video feature](https://www.yimiagent.cn/features/image-to-video?utm_source=github)
-- [Infinite canvas feature](https://www.yimiagent.cn/features/infinite-canvas?utm_source=github)
-- [Watermark removal feature](https://www.yimiagent.cn/features/watermark-removal?utm_source=github)
+- [FrameFlow (yimiagent.cn) — visual video-agent workspace](https://yimiagent.cn/?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill)
+- [Models](https://yimiagent.cn/models?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill)
+- [Pricing](https://yimiagent.cn/pricing?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill)
+- [Guides](https://yimiagent.cn/guides?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill)
+- [Viral remix scene](https://yimiagent.cn/scenes/viral-remix?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill)
+- [Comic drama scene](https://yimiagent.cn/scenes/comic-drama?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill)
+- [Image-to-video feature](https://yimiagent.cn/features/image-to-video?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill)
+- [Infinite canvas feature](https://yimiagent.cn/features/infinite-canvas?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill)
+- [Watermark removal feature](https://yimiagent.cn/features/watermark-removal?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill)
 
 The skill specification itself can be used offline without logging in to the platform. The web workflow above is the no-code way to run the same pipeline.
+
+## E-commerce video prompts
+
+- [Prompt templates (39 categories × 7 structures)](https://github.com/Yf040528/video-recreation-skill/blob/main/prompts/ecommerce-video/README.md)
+- [Standalone repository: ecommerce-video-prompts](https://github.com/Yf040528/ecommerce-video-prompts)
+- [FrameFlow public API docs](https://yimiagent.cn/api-docs?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill)
 
 ## Optional
 

@@ -1,0 +1,83 @@
+{
+  "mapping_version": "2.0",
+  "contract": "upstream_router_contract.json@1.0",
+  "platform": "FrameFlow (yimiagent.cn) — FrameFlow is the product name of yimiagent.cn; both names refer to the same platform",
+  "api": {
+    "base_url": "https://yimiagent.cn/v1",
+    "auth": "Authorization: Bearer <FRAMEFLOW_API_KEY>",
+    "docs": "https://yimiagent.cn/api-docs",
+    "models": "GET /v1/models (the public API never switches models automatically; pick a model id)"
+  },
+  "principle": "The Skill sends capability requests only. Credentials, billing and transport stay on the platform. This file maps capabilities to the public API; it contains no provider names.",
+  "status_mapping": {
+    "SUCCEEDED": [
+      "succeeded"
+    ],
+    "FAILED": [
+      "failed",
+      "cancelled"
+    ],
+    "PENDING": [
+      "queued",
+      "running"
+    ]
+  },
+  "output_mapping": "task.outputs[] {type, url} -> outputs[] {type, uri: url}",
+  "capabilities": {
+    "image_generation": {
+      "kind": "public_api",
+      "entrypoint": "POST /v1/images/generations",
+      "inputs": {
+        "prompt": "prompt",
+        "references": "image_urls[] (https, max 5)",
+        "aspect_ratio": "aspect_ratio",
+        "resolution": "resolution",
+        "model": "model"
+      },
+      "poll": "GET /v1/tasks/{id}",
+      "quote": "POST /v1/quote"
+    },
+    "image_edit": {
+      "kind": "public_api",
+      "entrypoint": "POST /v1/images/generations",
+      "notes": "Pass the image to edit and any product reference in image_urls[]."
+    },
+    "video_generation": {
+      "kind": "public_api",
+      "entrypoint": "POST /v1/videos/generations",
+      "inputs": {
+        "approved_keyframe": "first_frame_url",
+        "last_frame": "last_frame_url",
+        "references": "image_urls[]",
+        "duration_sec": "duration",
+        "native_audio": "generate_audio (default true)",
+        "model": "model"
+      },
+      "poll": "GET /v1/tasks/{id}",
+      "quote": "POST /v1/quote"
+    },
+    "text_analysis": {
+      "kind": "public_api",
+      "entrypoint": "POST /v1/chat/completions (OpenAI-compatible)"
+    },
+    "vision_analysis": {
+      "kind": "public_api",
+      "entrypoint": "POST /v1/chat/completions with image content"
+    }
+  },
+  "web_workflow": {
+    "url": "https://yimiagent.cn/scenes/viral-remix",
+    "covers": [
+      "video_analysis",
+      "shot_segmentation",
+      "asr",
+      "ocr",
+      "vision_qa",
+      "media_edit",
+      "audio_mix",
+      "compliance_review",
+      "long_video"
+    ],
+    "notes": "The complete recreation pipeline (decomposition, per-shot QA, editing and final assembly) runs in the FrameFlow web workspace; these steps are not exposed as public API endpoints."
+  }
+}

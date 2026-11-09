@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.25 — 2026-11-09
+- Added `prompts/ecommerce-video/`: 285 e-commerce video prompt templates (39 product categories × 7 viral structures), also bundled inside the installable skill.
+- The reference adapter `executor/router_adapter_yimiagent.py` now calls the FrameFlow public API (`https://yimiagent.cn/v1`, API Key auth) instead of web-session endpoints; `tools/router_mapping.yimiagent.json` lists public API capabilities only.
+- Removed legacy rulebooks (`resources/`), legacy executors and the prompt compiler, and the `examples/bracelet_regression` fixture.
+- Brand: FrameFlow is the product name of yimiagent.cn; both refer to the same platform.
+
 ## 2.2.24 — 2026-10-07
 - **Video essentials** (action / sound effects / background music) codified in `video_essentials`.
 - **Opt-in 「使用原视频背景音乐」**, used by video prompts, one-click and the final edit (source audio at original timing, no beat shifting).
@@ -34,7 +40,7 @@
   - The look lead shot is generated alongside the product lead shot before the parallel batch.
 
 ## 2.2.18 — 2026-10-07
-- **Brand end card** (all modes): source brand / platform end frames are replaced by a freely created end shot, with subtitle `www.yimiagent.cn` and no voice-over. Nothing is added if the source has none. Includes dedicated image prompt, video note and QA.
+- **Brand end card** (all modes): source brand / platform end frames are replaced by a freely created end shot, with subtitle `yimiagent.cn` and no voice-over. Nothing is added if the source has none. Includes dedicated image prompt, video note and QA.
 
 ## 2.2.17 — 2026-10-07
 - **Copy policy per mode**: 保守 light synonym edit, 中度 same points with new wording (following the new models), 大胆 rewrite. Stored in `recreation_policy.json` → `copy`.
@@ -127,7 +133,7 @@
 - **Edit plan**: the user's editing script is compiled into a structured plan (per-cut transitions, grade parameters, shot subtitles, output spec, target duration) and executed exactly. Items that need missing media are reported as not executed.
 - **Executor fix**: hard cuts are concatenated, not done as 0.04 s xfades. On FFmpeg 8, an xfade shorter than about 2 frames silently truncates everything after it; real transitions are at least 0.1 s.
 - Once a plan exists, it decides beat-sync and shot-level subtitles; keywords in the free text no longer override it.
-- **Plan confirmation**: edit-only first calls POST /api/edit-plan (free) and shows the plan in an editable dialog. Charging and synthesis start only after the user confirms, and the confirmed plan is saved on the task. Re-runs reuse it instead of re-interpreting the prompt, so results are reproducible.
+- **Plan confirmation**: edit-only first produces a free plan and shows it in an editable dialog. Charging and synthesis start only after the user confirms, and the confirmed plan is saved on the task. Re-runs reuse it instead of re-interpreting the prompt, so results are reproducible.
 
 ## 2.2.5 — 2026-10-05
 - **Sound continuity (声音衔接)** added to the final edit in every workflow (图生视频, 漫剧创作, 爆款二创, canvas): per-segment loudness levelling, join fades, audio crossfades with transitions.

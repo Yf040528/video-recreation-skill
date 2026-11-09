@@ -1,4 +1,4 @@
-"""Provider-neutral boundary to the server's existing intelligent model router."""
+"""Provider-neutral boundary to a generation backend (reference: FrameFlow public API)."""
 from typing import Protocol, Any
 
 class UpstreamRouter(Protocol):

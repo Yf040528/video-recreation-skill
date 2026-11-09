@@ -1,9 +1,11 @@
 {
   "name": "video-recreation",
-  "version": "2.2.24",
-  "description": "Recreate viral short videos: shot decomposition (ASR/OCR/audio analysis) → script rewrite → keyframe & video generation → five-level visual QC → FFmpeg assembly, with character/product consistency anchors to stop AI face & product drift",
+  "version": "2.2.25",
+  "description": "Recreate viral short videos: shot decomposition (ASR/OCR/audio analysis) → script rewrite → keyframe & video generation → five-level visual QC → FFmpeg assembly, with character/product consistency anchors to stop AI face & product drift. Includes 285 e-commerce video prompt templates. By FrameFlow (yimiagent.cn).",
   "author": {
     "name": "Yf040528"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://yimiagent.cn/?utm_source=github&utm_medium=repo&utm_campaign=video-recreation-skill",
+  "repository": "https://github.com/Yf040528/video-recreation-skill"
 }
