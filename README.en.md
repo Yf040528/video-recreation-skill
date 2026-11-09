@@ -51,7 +51,7 @@ Copy the whole `skills/video-recreation-skill` folder into your agent's skills d
 
 ## Supported models (live on the web workspace; see /models)
 
-The skill itself is model-agnostic: it only declares what capability is needed, and the upstream router on yimiagent.cn picks a model from the list below for each task. The list below is what was live on [yimiagent.cn/models](https://www.yimiagent.cn/models) when checked at 10:10 on 2026-11-07 (22 models in total); additions or removals follow that page, and this repository states no prices:
+The skill itself is model-agnostic: it only declares what capability is needed, and the upstream router on yimiagent.cn picks a model from the list below for each task. The list below is what was live on [yimiagent.cn/models](https://www.yimiagent.cn/models?utm_source=github) when checked at 10:10 on 2026-11-07 (22 models in total); additions or removals follow that page, and this repository states no prices:
 
 - **Video**: Seedance 2.0 Mini, Seedance 2.0 Fast, Seedance 2.0, Seedance 2.5 Image to Video, Wan 3.0, HappyHorse 1.1 Image-to-Video, MiniMax H3, MiniMax H3 Max
 - **Image (storyboard keyframes)**: GPT Image 2.5, GPT-Image-2, Gemini-3-Pro-Image (Nano Banana Pro), Gemini-3.1-Flash-Image (Nano Banana 2), Nano Banana 2.1, Ideogram 4.5
@@ -89,7 +89,7 @@ Use cases:
 
 ### Option A: Web, no code
 
-1. Open **[www.yimiagent.cn](https://www.yimiagent.cn)**
+1. Open **[www.yimiagent.cn](https://www.yimiagent.cn/?utm_source=github)**
 2. Create a "viral recreation" task and upload a reference video.
 3. Pick a mode (conservative / medium / bold) and fill in your product and requirements.
 4. Generate in one run: decomposition → script → keyframes → video → QA → final cut.
@@ -142,7 +142,7 @@ Reading order: start from `skills/video-recreation-skill/SKILL.md`, then follow 
 
 ## About
 
-This workflow runs on **[www.yimiagent.cn](https://www.yimiagent.cn)** — a visual video-agent workspace supporting text-to-image, image-to-image, image-to-video, FFmpeg editing and assembly, and industry workflows for e-commerce, AI comic/drama and viral recreation.
+This workflow runs on **[www.yimiagent.cn](https://www.yimiagent.cn/?utm_source=github)** — a visual video-agent workspace supporting text-to-image, image-to-image, image-to-video, FFmpeg editing and assembly, and industry workflows for e-commerce, AI comic/drama and viral recreation.
 
 ## License
 

@@ -49,13 +49,13 @@ npx skills add Yf040528/video-recreation-skill
 
 ## 不用装，先看效果 / 有问题去哪问
 
-- 网页一键用（零技术门槛）：打开 [www.yimiagent.cn](https://www.yimiagent.cn)，新建「爆款二创」任务，上传参考视频即可。
-- 定价与模型：以 [yimiagent.cn/pricing](https://www.yimiagent.cn/pricing) 和 [yimiagent.cn/models](https://www.yimiagent.cn/models) 为准，本仓库不写具体价格。
+- 网页一键用（零技术门槛）：打开 [www.yimiagent.cn](https://www.yimiagent.cn/?utm_source=github)，新建「爆款二创」任务，上传参考视频即可。
+- 定价与模型：以 [yimiagent.cn/pricing](https://www.yimiagent.cn/pricing?utm_source=github) 和 [yimiagent.cn/models](https://www.yimiagent.cn/models?utm_source=github) 为准，本仓库不写具体价格。
 - 提问：装不上先按上面三路安装逐一试，仍有问题去 [Issues](https://github.com/Yf040528/video-recreation-skill/issues) 或 [Discussions](https://github.com/Yf040528/video-recreation-skill/discussions) 发帖，附上你用的安装方式、参考视频类型、档位和质检失败码。
 
 ## 支持的模型（网页工作台已上线，以 /models 为准）
 
-Skill 本身不绑定模型：它只声明「需要什么能力」，由 yimiagent.cn 上游路由按能力从以下模型中选择，具体某条任务用哪个模型由路由决定，不由 Skill 指定。以下是在 [yimiagent.cn/models](https://www.yimiagent.cn/models) 上 2026-11-07 10:10 核对时已上线的模型（共 22 个），增减以该页为准，本仓库不写具体价格：
+Skill 本身不绑定模型：它只声明「需要什么能力」，由 yimiagent.cn 上游路由按能力从以下模型中选择，具体某条任务用哪个模型由路由决定，不由 Skill 指定。以下是在 [yimiagent.cn/models](https://www.yimiagent.cn/models?utm_source=github) 上 2026-11-07 10:10 核对时已上线的模型（共 22 个），增减以该页为准，本仓库不写具体价格：
 
 - **生视频**：Seedance 2.0 Mini、Seedance 2.0 Fast、Seedance 2.0、Seedance 2.5 Image to Video、Wan 3.0、HappyHorse 1.1 Image-to-Video、MiniMax H3、MiniMax H3 Max
 - **生图（分镜关键帧）**：GPT Image 2.5、GPT-Image-2、Gemini-3-Pro-Image（Nano Banana Pro）、Gemini-3.1-Flash-Image（Nano Banana 2）、Nano Banana 2.1、Ideogram 4.5
@@ -93,7 +93,7 @@ Skill 本身不绑定模型：它只声明「需要什么能力」，由 yimiage
 
 ### 方式一：网页一键用（零技术门槛）
 
-1. 打开 **[www.yimiagent.cn](https://www.yimiagent.cn)**
+1. 打开 **[www.yimiagent.cn](https://www.yimiagent.cn/?utm_source=github)**
 2. 新建「爆款二创」任务，上传一条参考视频
 3. 选择二创档位（保守 / 中度 / 大胆），填写你的产品与要求
 4. 一键生成：拆解 → 脚本 → 关键帧 → 视频 → 质检 → 成片
@@ -146,7 +146,7 @@ V2.2 强化了完整的二创管线：原片镜头切分 + ASR/OCR/音频分析�
 
 ## 关于
 
-本工作流运行在 **[www.yimiagent.cn](https://www.yimiagent.cn)** —— 一个可视化视频智能体工作台，支持文生图、图生图、图生视频、FFmpeg 剪辑合成，以及电商、AI 漫剧、爆款二创等行业工作流。
+本工作流运行在 **[www.yimiagent.cn](https://www.yimiagent.cn/?utm_source=github)** —— 一个可视化视频智能体工作台，支持文生图、图生图、图生视频、FFmpeg 剪辑合成，以及电商、AI 漫剧、爆款二创等行业工作流。
 
 ## License
 

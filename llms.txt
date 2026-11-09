@@ -46,15 +46,15 @@
 
 ## Web workflow
 
-- [yimiagent.cn — visual video-agent workspace](https://www.yimiagent.cn)
-- [Models](https://www.yimiagent.cn/models)
-- [Pricing](https://www.yimiagent.cn/pricing)
-- [Guides](https://www.yimiagent.cn/guides)
-- [Viral remix scene](https://www.yimiagent.cn/scenes/viral-remix)
-- [Comic drama scene](https://www.yimiagent.cn/scenes/comic-drama)
-- [Image-to-video feature](https://www.yimiagent.cn/features/image-to-video)
-- [Infinite canvas feature](https://www.yimiagent.cn/features/infinite-canvas)
-- [Watermark removal feature](https://www.yimiagent.cn/features/watermark-removal)
+- [yimiagent.cn — visual video-agent workspace](https://www.yimiagent.cn/?utm_source=github)
+- [Models](https://www.yimiagent.cn/models?utm_source=github)
+- [Pricing](https://www.yimiagent.cn/pricing?utm_source=github)
+- [Guides](https://www.yimiagent.cn/guides?utm_source=github)
+- [Viral remix scene](https://www.yimiagent.cn/scenes/viral-remix?utm_source=github)
+- [Comic drama scene](https://www.yimiagent.cn/scenes/comic-drama?utm_source=github)
+- [Image-to-video feature](https://www.yimiagent.cn/features/image-to-video?utm_source=github)
+- [Infinite canvas feature](https://www.yimiagent.cn/features/infinite-canvas?utm_source=github)
+- [Watermark removal feature](https://www.yimiagent.cn/features/watermark-removal?utm_source=github)
 
 The skill specification itself can be used offline without logging in to the platform. The web workflow above is the no-code way to run the same pipeline.
 
